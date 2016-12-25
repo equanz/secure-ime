@@ -1,0 +1,23 @@
+{
+  "name": "secure-ime",
+  "version": "0.0.1",
+  "description": "入力テキストをセキュアに変換してくれるIME的ツール",
+  "main": "main-electron.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rikyuusima/secure-ime.git"
+  },
+  "author": "rikyuusima",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rikyuusima/secure-ime/issues"
+  },
+  "homepage": "https://github.com/rikyuusima/secure-ime#readme",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "openpgp": "^2.3.5"
+  }
+}
