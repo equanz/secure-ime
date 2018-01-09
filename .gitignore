@@ -1,1 +1,5 @@
+# credential
 pgpkey/
+
+# npm
+node_modules/
