@@ -4,19 +4,21 @@
   "description": "入力テキストをセキュアに変換してくれるIME的ツール",
   "main": "main-electron.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rikyuusima/secure-ime.git"
+    "url": "git+https://github.com/equanz/secure-ime.git"
   },
-  "author": "rikyuusima",
+  "author": "equanz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rikyuusima/secure-ime/issues"
+    "url": "https://github.com/equanz/secure-ime/issues"
   },
-  "homepage": "https://github.com/rikyuusima/secure-ime#readme",
+  "homepage": "https://github.com/equanz/secure-ime#readme",
   "dependencies": {
+    "electron": "^1.7.10",
     "jquery": "^3.1.1",
     "openpgp": "^2.3.5"
   }
