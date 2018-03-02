@@ -2,7 +2,7 @@
   "name": "secure-ime",
   "version": "0.0.1",
   "description": "入力テキストをセキュアに変換してくれるIME的ツール",
-  "main": "main-electron.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ."
@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/equanz/secure-ime#readme",
   "dependencies": {
-    "electron": "^1.7.10",
-    "jquery": "^3.1.1",
-    "openpgp": "^2.3.5"
+    "electron": "^1.8.2",
+    "menubar": "^5.2.3",
+    "openpgp": "^2.6.2"
   }
 }
