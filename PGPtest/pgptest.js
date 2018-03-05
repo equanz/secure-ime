@@ -3,9 +3,11 @@ let openpgp = require('openpgp')
 openpgp.initWorker({path:'openpgp.worker.js'})
 openpgp.config.aead_protect = true
 
+let hkp = new openpgp.HKP('https://pgp.mit.edu')
+
 //鍵の作成に必要なoptionの設定
 let options = {
-  userIds:[{name:'example' , email:'hoge@example.com'}],
+  userIds:[{name:'example' , email:'fcq07590@sawoe.com'}],
   numBit:256,
 }
 
@@ -26,7 +28,6 @@ openpgp.generateKey(options).then(function(key){
   //暗号化
   openpgp.encrypt(cryptoption).then(function(ciphertext){
     let encrypted = ciphertext.data
-    console.log(encrypted)
 
     //復号に必要なoptionの設定
     let decryptoption = {
@@ -38,7 +39,11 @@ openpgp.generateKey(options).then(function(key){
     //復号
     openpgp.decrypt(decryptoption).then(function(plaintext){
       let plain = plaintext.data
-      console.log(plain)
+
+      //HKPサーバへのアップロード
+      hkp.upload(pubkey).then(function() {
+
+      })
     })
   })
 })
