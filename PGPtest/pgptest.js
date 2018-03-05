@@ -7,7 +7,7 @@ let hkp = new openpgp.HKP('https://pgp.mit.edu')
 
 //鍵の作成に必要なoptionの設定
 let options = {
-  userIds:[{name:'example' , email:'fcq07590@sawoe.com'}],
+  userIds:[{name:'example' , email:'example@example.com'}],
   numBit:256,
 }
 
