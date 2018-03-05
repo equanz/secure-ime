@@ -41,8 +41,17 @@ openpgp.generateKey(options).then(function(key){
       let plain = plaintext.data
 
       //HKPサーバへのアップロード
-      hkp.upload(pubkey).then(function() {
+      //hkp.upload(pubkey).then(function() {})
 
+      //検索オプション
+      let searchoption ={
+        query: 'search@example.com'
+      }
+
+      //HKPサーバからの公開鍵検索
+      hkp.lookup(searchoption).then(function(key){
+        let searchpub = openpgp.key.readArmored(key)
+        console.log(key)
       })
     })
   })
