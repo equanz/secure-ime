@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    # set Docker image
+    docker:
+      - image: node:8.10.0-alpine
+    working_directory: ~/app
+
+    # build steps
+    steps:
+      - checkout
+
+      # install requirement
+      - run:
+          name: Install requirement by npm
+          command: npm install
+
+      # run eslint(static code analyze)
+      - run:
+          name: Run eslint(static code analyze)
+          command: npm run eslint
+
