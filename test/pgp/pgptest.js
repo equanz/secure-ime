@@ -38,7 +38,7 @@ openpgp.generateKey(options).then(function(key){
 
     //復号
     openpgp.decrypt(decryptoption).then(function(plaintext){
-      let plain = plaintext.data
+      console.log(plaintext.data)
 
       //HKPサーバへのアップロード
       //hkp.upload(pubkey).then(function() {})
@@ -52,6 +52,7 @@ openpgp.generateKey(options).then(function(key){
       hkp.lookup(searchoption).then(function(key){
         let searchpub = openpgp.key.readArmored(key)
         console.log(key)
+        console.log(searchpub)
       })
     })
   })
