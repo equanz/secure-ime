@@ -2,7 +2,7 @@
 openpgp.config.aead_protect = true
 
 //pgp各処理を行う関数を持ったオブジェクト
-let pgp_func = {
+let pgp_lib = {
   url: 'https://pgp.mit.edu'
 }
 
@@ -12,7 +12,7 @@ let pgp_func = {
   * @param pubkey{string} - PGP public key for encrypt
   * @return {Promise} - Promise object represents the encrypt text
   */
-pgp_func.Encrypt = function(original,pubkey){
+pgp_lib.Encrypt = function(original,pubkey){
   return new Promise(function(resolve,reject){
     let cryptoption = {
       data: original,
@@ -21,6 +21,8 @@ pgp_func.Encrypt = function(original,pubkey){
 
     openpgp.encrypt(cryptoption).then(function(ciphertext){
       resolve(ciphertext.data)
+    }).catch(function(err){
+      reject(err)
     })
   })
 
@@ -32,7 +34,7 @@ pgp_func.Encrypt = function(original,pubkey){
   * @param privkey{string} - PGP private key for decrypt
   * @return {Promise} - Promise object represents the decrypt txt
   */
-pgp_func.Decrypt = function(cryptdata,privkey){
+pgp_lib.Decrypt = function(cryptdata,privkey){
   return new Promise(function(resolve,reject){
     let decryptoption = {
       message: openpgp.message.readArmored(cryptdata),
@@ -41,6 +43,8 @@ pgp_func.Decrypt = function(cryptdata,privkey){
 
     openpgp.decrypt(decryptoption).then(function(plaintext){
       resolve(plaintext.data)
+    }).catch(function(err){
+      reject(err)
     })
   })
 }
@@ -52,7 +56,7 @@ pgp_func.Decrypt = function(cryptdata,privkey){
   * @param bitnum{int} - key's bit number
   * @return {Promise} - Promise object represents the object included private key and public key
   */
-pgp_func.MakeKey = function(name,email,bitnum){
+pgp_lib.MakeKey = function(name,email,bitnum){
   return new Promise(function(resolve,reject){
     let useroption = {
       userIds:[{name:name,email:email}],
@@ -65,6 +69,8 @@ pgp_func.MakeKey = function(name,email,bitnum){
         privkey:key.privateKeyArmored
       }
       resolve(keys)
+    }).catch(function(err){
+      reject(err)
     })
   })
 }
@@ -74,9 +80,9 @@ pgp_func.MakeKey = function(name,email,bitnum){
   * @param pubkey{string} - PGP public key for upload HKP server
   * @return {Promise} - Promise object
   */
-pgp_func.UploadKey = function(pubkey){
+pgp_lib.UploadKey = function(pubkey){
   return new Promise(function(resolve,reject){
-    let hkp = new openpgp.HKP(pgp_func.url)
+    let hkp = new openpgp.HKP(pgp_lib.url)
     hkp.upload(pubkey).then(function(){
       resolve()
     }).catch(function(err){
@@ -90,9 +96,9 @@ pgp_func.UploadKey = function(pubkey){
   * @param email{string} -  email addresss for search public key
   * @return {Promise} - Promise object represents the search result public key if none return undefinde  or err
   */
-pgp_func.SearchKey = function(email){
+pgp_lib.SearchKey = function(email){
   return new Promise(function(resolve,reject){
-    let hkp = new openpgp.HKP(pgp_func.url)
+    let hkp = new openpgp.HKP(pgp_lib.url)
     let searchoption = {
       query:email
     }
