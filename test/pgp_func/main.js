@@ -8,4 +8,9 @@ pgp_func.MakeKey('example','example@email.com',256).then(function(keys) {
   return pgp_func.Decrypt(encrypted,privkey)
 }).then(function(plaintext){
   console.log(plaintext)
+  return pgp_func.SearchKey("equanz789@gmail.com")
+}).then(function(result){
+  console.log(result)
+}).catch(function(err) {
+  console.log(err)
 })

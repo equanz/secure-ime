@@ -79,6 +79,8 @@ pgp_func.UploadKey = function(pubkey){
     let hkp = new openpgp.HKP(pgp_func.url)
     hkp.upload(pubkey).then(function(){
       resolve()
+    }).catch(function(err){
+      reject(err)
     })
   })
 }
@@ -86,7 +88,7 @@ pgp_func.UploadKey = function(pubkey){
 /**
   * 鍵の検索
   * @param email{string} -  email addresss for search public key
-  * @return {Promise} - Promise object represents the search result public key or err
+  * @return {Promise} - Promise object represents the search result public key if none return undefinde  or err
   */
 pgp_func.SearchKey = function(email){
   return new Promise(function(resolve,reject){
