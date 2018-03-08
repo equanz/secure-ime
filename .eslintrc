@@ -6,7 +6,10 @@
     node: true,
     es6: true
   },
-  globals: {},
+  globals: {
+    openpgp: true,
+    pgp_lib: true
+  },
   rules: {
     semi: [2, "never"], // エラー: セミコロン
     no-console: 0, // 許可: console
