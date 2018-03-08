@@ -71,7 +71,7 @@ pgp_func.MakeKey = function(name,email,bitnum){
 
 /**
   * 鍵のHKPサーバへのアップロード
-  * @param pubkey{string} - PGP punlic key for upload HKP server
+  * @param pubkey{string} - PGP public key for upload HKP server
   * @return {Promise} - Promise object
   */
 pgp_func.UploadKey = function(pubkey){
