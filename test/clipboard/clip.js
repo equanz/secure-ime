@@ -5,6 +5,6 @@ clipboard.on('success',function(e){
   //成功時の処理
   e.clearSelection() //テキストの選択解除
 })
-clipboard.on('error',function(e){
+clipboard.on('error',function(){
   //失敗時の処理
 })
