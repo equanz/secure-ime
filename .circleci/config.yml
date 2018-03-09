@@ -3,7 +3,7 @@ jobs:
   build:
     # set Docker image
     docker:
-      - image: node:8.10.0-slim
+      - image: circleci/node:8.10.0
     working_directory: ~/app
 
     # build steps
