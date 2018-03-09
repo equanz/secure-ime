@@ -3,7 +3,7 @@ jobs:
   build:
     # set Docker image
     docker:
-      - image: node:8.10.0-alpine
+      - image: node:8.10.0-slim
     working_directory: ~/app
 
     # build steps
