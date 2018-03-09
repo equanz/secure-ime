@@ -6,9 +6,9 @@
     node: true,
     es6: true
   },
-  globals: {
-    openpgp: true,
-    pgp_lib: true
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: "module" // ES2015のモジュールを許可
   },
   rules: {
     semi: [2, "never"], // エラー: セミコロン
