@@ -1,3 +1,9 @@
 # npm
 node_modules/
 
+# test directory
+test/
+
+# webpack
+bundle.js
+

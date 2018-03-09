@@ -3,7 +3,7 @@ jobs:
   build:
     # set Docker image
     docker:
-      - image: node:8.10.0-alpine
+      - image: circleci/node:8.9.4-browsers
     working_directory: ~/app
 
     # build steps
@@ -14,6 +14,11 @@ jobs:
       - run:
           name: Install requirement by npm
           command: npm install
+
+      # build from webpack
+      - run:
+          name: Build from webpack
+          command: npm run build
 
       # run eslint(static code analyze)
       - run:
