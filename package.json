@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/equanz/secure-ime#readme",
   "dependencies": {
+    "clipboard": "^2.0.0",
     "electron": "^1.8.2",
     "menubar": "^5.2.3",
     "openpgp": "^2.6.2"
