@@ -15,6 +15,11 @@ jobs:
           name: Install requirement by npm
           command: npm install
 
+      # build from webpack
+      - run:
+          name: Build from webpack
+          command: npm run build
+
       # run eslint(static code analyze)
       - run:
           name: Run eslint(static code analyze)
