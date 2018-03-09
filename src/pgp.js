@@ -7,11 +7,11 @@ import * as openpgp from 'openpgp'
 const hkp_url = 'https://pgp.mit.edu' // PGP公開鍵サーバURL
 
 /**
- * 暗号化
- * @param original{string} - uncrypt text
- * @param pubkey{string} - PGP public key for encrypt
- * @return {Promise} - Promise object represents the encrypt text
- */
+  * 暗号化
+  * @param original{string} - uncrypt text
+  * @param pubkey{string} - PGP public key for encrypt
+  * @return {Promise} - Promise object represents the encrypt text
+  */
 export let Encrypt = function(original,pubkey){
   return new Promise(function(resolve,reject){
     let cryptoption = {
