@@ -3,3 +3,6 @@ pgpkey/
 
 # npm
 node_modules/
+
+# webpack
+bundle.js
