@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <script src="../../node_modules/clipboard/dist/clipboard.min.js"></script>
+  </head>
+  <body>
+    <!--テキスト入力箇所をid付きで作成する -->
+    <textarea id="bar">Hello world!</textarea>
+    <!--クラスにbtn data-clipboard-actionにcopyを指定 data-clipboard-targetにターゲットとなるテキストのidを指定 -->
+    <button class="btn" data-clipboard-action="copy" data-clipboard-target="#bar">
+      Copy
+    </button>
+    <!--btnクラスを宣言した下でスクリプトを読み込む -->
+    <script type="text/javascript" src="clip.js"></script>
+  </body>
+</html>
