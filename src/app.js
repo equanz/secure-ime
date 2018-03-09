@@ -1,10 +1,5 @@
 import Vue from 'vue/dist/vue.esm'
-import * as pgp_lib from './pgp.js'
-
-/* let mode_toggle = new Vue({
- *   el: '#mode-toggle',
- *
- * })*/
+//import * as pgp_lib from './pgp.js'
 
 let mode_toggle = new Vue({
   el: '#mode-toggle',
