@@ -1,16 +1,25 @@
 import * as CryptoJS from 'crypto-js'
-const fs = require('fs')
-const path = require('path')
+import * as pgp_lib from  './pgp.js'
 
-export let EncryptSave = function(original,secret_key){
-  let ciphertext = CryptoJS.AES.encrypt(original,secret_key)
-  let home = process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"]
-  let folroot = path.join(home,".secure-ime")
-  if (!fs.existsSync(root)) {
-    fs.mkdirSync(root)
-  }
-  let fileroot = path.join(folroot,"privkey.pem")
-  fs.writeFile(fileroot,ciphertext.toString())
+const {ipcRenderer} = require('electron')
+
+/**
+  * 鍵の初期処理
+  * @param name{string} - user name
+  * @param email{string} -user email adress
+  * @param bitnum{int} - key's bit number
+  * @param secret_key(string) - pass phrase for private key encrypt
+  */
+export let KeySave = function(name,email,bitnum,secret_key){
+  let privkey,pubkey
+  pgp_lib.MakeKey(name,email,bitnum).then(function(keys){
+    pubkey = keys.pubkey
+    privkey = keys.privkey
+    return pgp_lib.UploadKey(pubkey)
+  }).then(function(){
+    let ciphertext = CryptoJS.AES.encrypt(privkey,secret_key)
+    ipcRenderer.send('save',ciphertext.toString())
+  })
 }
 
 /*
