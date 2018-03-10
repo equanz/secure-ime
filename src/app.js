@@ -29,4 +29,3 @@ let app = new Vue({
     encrypt: true
   }
 })
-

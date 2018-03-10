@@ -2,9 +2,10 @@
 import * as openpgp from 'openpgp'
 
 //高速なAES-GCMモードの設定
-//openpgp.config.aead_protect = true
+openpgp.config.aead_protect = true
 
 const hkp_url = 'https://pgp.mit.edu' // PGP公開鍵サーバURL
+const limit_time = 864000 //鍵の有効期限
 
 /**
   * 暗号化
@@ -60,7 +61,8 @@ export let MakeKey = function(name,email,bitnum){
   return new Promise(function(resolve,reject){
     let useroption = {
       userIds:[{name:name,email:email}],
-      numBit:bitnum
+      numBit:bitnum,
+      KeyExprirationTime: limit_time
     }
 
     openpgp.generateKey(useroption).then(function(key){
@@ -110,4 +112,3 @@ export let SearchKey = function(email){
     })
   })
 }
-
