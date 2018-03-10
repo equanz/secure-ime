@@ -15,7 +15,7 @@ new Vue({
   // Method
   methods: {
     // register PGP key and save
-    register: function (e){
+    register: function (){
       aes_lib.KeySave(this.name, this.email, bitnum, this.pass).then(() => {
         window.location.href = './index.html' // page moving
       })
