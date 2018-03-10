@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  </head>
+  <body>
+    <h3>Welcome!</h3>
+    <img src="../illust/logo@512px.png" width="100" alt="SecureIME"/>
+
+    <p>Create your PGP key</p>
+    <article id="app">
+      <span class="input-group input-group-sm mb-3">
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Your name" v-model="name"/>
+      </span>
+      <span class="input-group input-group-sm mb-3">
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Email address" v-model="email"/>
+      </span>
+      <span class="input-group input-group-sm mb-3">
+        <input type="password" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Choose main password" v-model="pass"/>
+      </span>
+
+      <button type="button" class="btn btn-secondary" v-on:click="register">Register</button>
+    </article>
+
+    <script src="./init.bundle.js"></script>
+  </body>
+</html>

@@ -4,13 +4,28 @@ const path = require('path')
 const fs = require('fs')
 const {ipcMain} = require('electron')
 
-let mb = menubar({
-  index: `file://${path.join(__dirname, '/src/index.html')}` // index.html
-})
+// initialize
+let mb = null
+let home = process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"]
+let filename = path.join(home, ".secure-ime", "privkey.pem")
 
-// ready request handler
-mb.on('ready', () => {
-  console.log('app is ready.')
+// if file exists
+fs.access(filename, (err) => {
+  if(err){
+    mb = menubar({
+      index: `file://${path.join(__dirname, '/src/init.html')}` // init.html
+    })
+  }
+  else{
+    mb = menubar({
+      index: `file://${path.join(__dirname, '/src/index.html')}` // index.html
+    })
+  }
+
+  // ready request handler
+  mb.on('ready', () => {
+    console.log('app is ready.')
+  })
 })
 
 // save privkey

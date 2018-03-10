@@ -5,4 +5,4 @@ pgpkey/
 node_modules/
 
 # webpack
-bundle.js
+*.bundle.js
