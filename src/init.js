@@ -18,6 +18,8 @@ new Vue({
     register: function (){
       aes_lib.KeySave(this.name, this.email, bitnum, this.pass).then(() => {
         window.location.href = './index.html' // page moving
+      }).catch((err) => { // error handle
+        window.alert(err) // popup alert window
       })
     }
   }
