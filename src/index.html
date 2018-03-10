@@ -1,10 +1,55 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <script src="./bundle.js"></script>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
   <body>
-    <p>hoge</p>
+    <!-- toggle mode change -->
+    <span class="btn-group btn-group-toggle" id="mode-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary active" id="encrypt">
+        <input type="radio" name="options" v-on:click="click"/><i class="fa fa-lock"></i>
+      </label>
+      <label class="btn btn-secondary" id="decrypt">
+        <input type="radio" name="options" id="decrypt" v-on:click="click"/><i class="fa fa-unlock"></i>
+      </label>
+    </span>
+
+    <!-- input -->
+    <article id="app">
+      <!-- encrypt -->
+      <template v-if="encrypt">
+        <span class="input-group input-group-sm mb-3">
+          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="example@example.com">
+        </span>
+        <span class="input-group">
+          <textarea class="form-control" aria-label="With textarea" placeholder="Please type plaintext!"></textarea>
+        </span>
+        <button type="button" class="btn btn-secondary">Encrypt</button>
+
+        <span class="input-group">
+          <textarea class="form-control" aria-label="With textarea" placeholder="Ciphertext is here!"></textarea>
+        </span>
+      </template>
+
+      <!-- decrypt -->
+      <template v-else>
+        <span class="input-group">
+          <textarea class="form-control" aria-label="With textarea" placeholder="Please type ciphertext!"></textarea>
+        </span>
+        <button type="button" class="btn btn-secondary">Decrypt</button>
+
+        <span class="input-group input-group-sm mb-3">
+          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="example@example.com">
+        </span>
+        <span class="input-group">
+          <textarea class="form-control" aria-label="With textarea" placeholder="Plaintext is here!"></textarea>
+        </span>
+      </template>
+    </article>
+
+    <script src="./bundle.js"></script>
   </body>
 </html>

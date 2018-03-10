@@ -4,7 +4,6 @@
   "description": "入力テキストをセキュアに変換してくれるIME的ツール",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
     "eslint": "eslint .",
     "build": "webpack",
@@ -21,10 +20,15 @@
   },
   "homepage": "https://github.com/equanz/secure-ime#readme",
   "dependencies": {
+    "bootstrap": "^4.0.0",
     "clipboard": "^2.0.0",
     "electron": "^1.8.2",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
     "menubar": "^5.2.3",
-    "openpgp": "^2.6.2"
+    "openpgp": "^2.6.2",
+    "popper.js": "^1.12.9",
+    "vue": "^2.5.13"
   },
   "devDependencies": {
     "eslint": "^4.18.2",
