@@ -1,4 +1,4 @@
-import * as CryptoJS from 'crypto-js'
+import * as openpgp from 'openpgp'
 import * as pgp_lib from  './pgp.js'
 
 const {ipcRenderer} = require('electron')
@@ -17,31 +17,41 @@ export let KeySave = function(name,email,bitnum,secret_key){
     pgp_lib.MakeKey(name,email,bitnum).then(function(keys){
       pubkey = keys.pubkey
       privkey = keys.privkey
+      console.log(privkey)
       return pgp_lib.UploadKey(pubkey)
     }).catch(function(err){
       reject(err)
     }).then(function(){
-      let ciphertext = CryptoJS.AES.encrypt(privkey,secret_key)
-      ipcRenderer.send('save',ciphertext.toString())
-      resolve()
+      let options = {
+        data: privkey,
+        passwords: secret_key
+      }
+      openpgp.encrypt(options).then(function(ciphertext){
+        ipcRenderer.send('save',ciphertext.data)
+        resolve()
+      }).catch(function(err){
+        reject(err)
+      })
     }).catch(function(err){
       reject(err)
     })
   })
 }
 
-/*
-export let Decrypt = function(secret_key){
-  let home = process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"]
-  let root = path.join(home,'.secure-ime','privkey.pem')
-  let crypted
-  fs.readFile(root,'utf8',function(err,data){
-    if(err){
-      throw err
-    }
-    crypted = data
-  })
-  let bytes = CryptoJS.AES.decrypt(crypted,secret_key)
-  return bytes.toString(CryptoJS.enc.utf8)
 
-*/
+export let DecryptKey = function(secret_key){
+  return new Promise(function(resolve,reject){
+    ipcRenderer.send('decrypt')
+    ipcRenderer.on('reply',function(event,data){
+      let options = {
+        message: openpgp.message.readArmored(data),
+        passwords: secret_key
+      }
+      openpgp.decrypt(options).then(function(privkey){
+        resolve(privkey.data)
+      }).catch(function(err){
+        reject(err)
+      })
+    })
+  })
+}

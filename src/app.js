@@ -1,5 +1,6 @@
 import Vue from 'vue/dist/vue.esm'
 //import * as pgp_lib from './pgp.js'
+//import * as a from './aes.js'
 
 /* let mode_toggle = */new Vue({
   el: '#mode-toggle',
@@ -29,3 +30,11 @@ let app = new Vue({
     encrypt: true
   }
 })
+
+/*
+a.KeySave('example','fcq07590@sawoe.com',256,'secret').then(function(){
+  return a.DecryptKey('secret')
+}).then(function(s){
+  console.log(s)
+})
+*/
