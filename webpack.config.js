@@ -6,5 +6,10 @@ module.exports = {
     filename: 'bundle.js',
     path: path.join(__dirname, '/src')
   },
-  cache: true
+  cache: true,
+  externals: [
+    'electron',
+    'fs',
+    'path'
+  ]
 }

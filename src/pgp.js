@@ -2,7 +2,7 @@
 import * as openpgp from 'openpgp'
 
 //高速なAES-GCMモードの設定
-//openpgp.config.aead_protect = true
+openpgp.config.aead_protect = true
 
 const hkp_url = 'https://pgp.mit.edu' // PGP公開鍵サーバURL
 
@@ -110,4 +110,3 @@ export let SearchKey = function(email){
     })
   })
 }
-
