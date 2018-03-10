@@ -5,7 +5,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/src'),
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2' // モジュールを呼ぶ方式
   },
   cache: true,
   externals: [
