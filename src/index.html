@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
   </head>
   <body>
     <!-- toggle mode change -->
-    <span class="btn-group btn-group-toggle" id="mode-toggle" data-toggle="buttons">
+    <span class="d-flex justify-content-center p-3 flex-wrap btn-group btn-group-toggle" id="mode-toggle" data-toggle="buttons">
       <label class="btn btn-secondary active" id="encrypt">
         <input type="radio" name="options" v-on:click="click"/><i class="fa fa-lock"></i>
       </label>
@@ -21,31 +21,37 @@
     <article id="app">
       <!-- encrypt -->
       <template v-if="toggle_encrypt">
-        <span class="input-group input-group-sm mb-3">
+        <span class="d-flex justify-content-center input-group input-group-sm mb-1">
           <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="example@example.com" v-model="encrypt.target_email"/>
         </span>
-        <span class="input-group">
+        <span class="d-flex justify-content-center mb-2 input-group">
           <textarea class="form-control" aria-label="With textarea" placeholder="Please type plaintext!" v-model="encrypt.plaintext"></textarea>
         </span>
-        <button type="button" class="btn btn-secondary" v-on:click="encrypt_click">Encrypt</button>
+        <span class="d-flex justify-content-center">
+          <button type="button" class="btn btn-secondary mb-4" v-on:click="encrypt_click">Encrypt</button>
+        </span>
 
-        <span class="input-group">
+        <span class="d-flex justify-content-center input-group">
           <textarea id="encrypt_cipher" class="form-control" aria-label="With textarea" placeholder="Ciphertext is here!" v-model="encrypt.ciphertext"></textarea>
         </span>
-        <button id="cipher_copy" data-clipboard-target="#encrypt_cipher" type="button" class="btn btn-primary">Copy!</button>
+        <span class="d-flex justify-content-end">
+          <button id="cipher_copy" data-clipboard-target="#encrypt_cipher" type="button" class="btn btn-primary">Copy!</button>
+        </span>
       </template>
 
       <!-- decrypt -->
       <template v-else>
-        <span class="input-group">
+        <span class="d-flex justify-content-center mb-1 input-group">
           <textarea class="form-control" aria-label="With textarea" placeholder="Please type ciphertext!" v-model="decrypt.ciphertext"></textarea>
         </span>
-        <span class="input-group input-group-sm mb-3">
+        <span class="d-flex justify-content-center mb-2 input-group input-group-sm">
           <input type="password" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Type your password" v-model="decrypt.source_password"/>
         </span>
-        <button type="button" class="btn btn-secondary" v-on:click="decrypt_click">Decrypt</button>
+        <span class="d-flex justify-content-center mb-4 input-group flex-wrap">
+          <button type="button" class="btn btn-secondary" v-on:click="decrypt_click">Decrypt</button>
+        </span>
 
-        <span class="input-group">
+        <span class="d-flex justify-content-center input-group">
           <textarea class="form-control" aria-label="With textarea" placeholder="Plaintext is here!" v-model="decrypt.plaintext"></textarea>
         </span>
       </template>

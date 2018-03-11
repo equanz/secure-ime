@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
   </head>
   <body>
-    <h3>Welcome!</h3>
-    <img src="../illust/logo@512px.png" width="100" alt="SecureIME"/>
+    <span class="d-flex justify-content-center p-2">
+      <h3>Welcome!</h3>
+    </span>
+      <img class="rounded mx-auto d-block p-2" src="../illust/logo@512px.png" width="120" alt="SecureIME"/>
 
     <p>Create your PGP key</p>
     <article id="app">
@@ -18,11 +20,13 @@
       <span class="input-group input-group-sm mb-3">
         <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Email address" v-model="email"/>
       </span>
-      <span class="input-group input-group-sm mb-3">
+      <span class="input-group input-group-sm mb-2">
         <input type="password" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Choose main password" v-model="pass"/>
       </span>
 
-      <button type="button" class="btn btn-secondary" v-on:click="register">Register</button>
+      <span class="d-flex justify-content-center input-group">
+        <button type="button" class="btn btn-secondary" v-on:click="register">Register</button>
+      </span>
     </article>
 
     <script src="./init.bundle.js"></script>
