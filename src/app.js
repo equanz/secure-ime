@@ -1,5 +1,6 @@
 import Vue from 'vue/dist/vue.esm'
 import * as pgp_lib from './pgp.js'
+import * as aes_lib from './aes.js'
 
 new Vue({
   el: '#mode-toggle',
@@ -41,7 +42,7 @@ let app = new Vue({
   },
   // Method
   methods: {
-    encrypt_click: function (e){
+    encrypt_click: function (){
       // search target public key
       pgp_lib.SearchKey(this.encrypt.target_email).then((target_pubkey) => {
         // encrypt by target public key
@@ -54,7 +55,18 @@ let app = new Vue({
         window.alert(err)
       })
     },
-    decrypt_click: function (e){
+    decrypt_click: function (){
+      // get own private key
+      aes_lib.KeyLoad(/*TODO: write AES password*/).then((own_privkey) => {
+        // decrypt by own private key
+        return pgp_lib.Decrypt(this.decrypt.ciphertext, own_privkey)
+      }).catch((err) => {
+        window.alert(err)
+      }).then((plaintext) => {
+        this.decrypt.plaintext = plaintext // add to model
+      }).catch((err) => {
+        window.alert(err)
+      })
     }
   }
 })
