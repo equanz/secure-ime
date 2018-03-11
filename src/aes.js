@@ -37,8 +37,8 @@ export let KeySave = function(name,email,bitnum,secret_key){
   */
 export let DecryptKey = function(secret_key){
   return new Promise(function(resolve,reject){
-    ipcRenderer.send('decrypt')
-    ipcRenderer.on('reply',function(event,data){
+    ipcRenderer.send('load')
+    ipcRenderer.on('retrun_data',function(event,data){
       let bytes = CryptoJS.AES.decrypt(data,secret_key)
       try{
         let plain = bytes.toString(CryptoJS.enc.Utf8)

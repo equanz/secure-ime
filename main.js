@@ -39,13 +39,13 @@ ipcMain.on('save',function(event,ciphertext){
   fs.writeFile(fileroot,ciphertext)
 })
 
-ipcMain.on('decrypt',function(event){
+ipcMain.on('load',function(event){
   let home = process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"]
   let root = path.join(home,'.secure-ime','privkey.pem')
   fs.readFile(root,'utf8',function(err,data){
     if(err){
       throw err
     }
-    event.sender.send('reply',data)
+    event.sender.send('retrun_data',data)
   })
 })
