@@ -20,32 +20,32 @@
     <!-- input -->
     <article id="app">
       <!-- encrypt -->
-      <template v-if="encrypt">
+      <template v-if="toggle_encrypt">
         <span class="input-group input-group-sm mb-3">
-          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="example@example.com"/>
+          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="example@example.com" v-model="encrypt.target_email"/>
         </span>
         <span class="input-group">
-          <textarea class="form-control" aria-label="With textarea" placeholder="Please type plaintext!"></textarea>
+          <textarea class="form-control" aria-label="With textarea" placeholder="Please type plaintext!" v-model="encrypt.plaintext"></textarea>
         </span>
-        <button type="button" class="btn btn-secondary">Encrypt</button>
+        <button type="button" class="btn btn-secondary" v-on:click="encrypt_click">Encrypt</button>
 
         <span class="input-group">
-          <textarea class="form-control" aria-label="With textarea" placeholder="Ciphertext is here!"></textarea>
+          <textarea class="form-control" aria-label="With textarea" placeholder="Ciphertext is here!" v-model="encrypt.ciphertext"></textarea>
         </span>
       </template>
 
       <!-- decrypt -->
       <template v-else>
         <span class="input-group">
-          <textarea class="form-control" aria-label="With textarea" placeholder="Please type ciphertext!"></textarea>
+          <textarea class="form-control" aria-label="With textarea" placeholder="Please type ciphertext!" v-model="decrypt.ciphertext"></textarea>
         </span>
-        <button type="button" class="btn btn-secondary">Decrypt</button>
+        <button type="button" class="btn btn-secondary" v-on:click="decrypt_click">Decrypt</button>
 
         <span class="input-group input-group-sm mb-3">
-          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="example@example.com"/>
+          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="example@example.com" v-model="decrypt.source_email"/>
         </span>
         <span class="input-group">
-          <textarea class="form-control" aria-label="With textarea" placeholder="Plaintext is here!"></textarea>
+          <textarea class="form-control" aria-label="With textarea" placeholder="Plaintext is here!" v-model="decrypt.plaintext"></textarea>
         </span>
       </template>
     </article>
