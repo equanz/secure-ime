@@ -29,7 +29,11 @@ export let KeySave = function(name,email,bitnum,secret_key){
   })
 }
 
-
+/**
+  * 秘密鍵の取り出し
+  * @param secret_key{string} - pass phrase for decrypt private key
+  * @return {Promise} - Promise object represent plain text or error
+  */
 export let DecryptKey = function(secret_key){
   return new Promise(function(resolve,reject){
     ipcRenderer.send('decrypt')
