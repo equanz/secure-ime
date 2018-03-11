@@ -13,12 +13,14 @@ let filename = path.join(home, ".secure-ime", "privkey.pem")
 fs.access(filename, (err) => {
   if(err){
     mb = menubar({
-      index: `file://${path.join(__dirname, '/src/init.html')}` // init.html
+      index: `file://${path.join(__dirname, '/src/init.html')}`, // init.html
+      icon: path.join(__dirname, '/illust/icon.png') //set icon
     })
   }
   else{
     mb = menubar({
-      index: `file://${path.join(__dirname, '/src/index.html')}` // index.html
+      index: `file://${path.join(__dirname, '/src/index.html')}`, // index.html
+      icon: path.join(__dirname, '/illust/icon.png') //set icon
     })
   }
 
