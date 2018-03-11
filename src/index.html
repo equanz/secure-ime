@@ -34,7 +34,9 @@
         <span class="d-flex justify-content-center input-group">
           <textarea id="encrypt_cipher" class="form-control" aria-label="With textarea" placeholder="Ciphertext is here!" v-model="encrypt.ciphertext"></textarea>
         </span>
-        <button id="cipher_copy" data-clipboard-target="#encrypt_cipher" type="button" class="btn btn-primary">Copy!</button>
+        <span class="d-flex justify-content-end">
+          <button id="cipher_copy" data-clipboard-target="#encrypt_cipher" type="button" class="btn btn-primary">Copy!</button>
+        </span>
       </template>
 
       <!-- decrypt -->
