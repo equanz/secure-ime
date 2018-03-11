@@ -35,7 +35,7 @@ export let KeySave = function(name,email,bitnum,secret_key){
   * @param secret_key{string} - pass phrase for decrypt private key
   * @return {Promise} - Promise object represent plain text or error
   */
-export let DecryptKey = function(secret_key){
+export let KeyLoad = function(secret_key){
   return new Promise(function(resolve,reject){
     ipcRenderer.send('load')
     ipcRenderer.on('retrun_data',function(event,data){
