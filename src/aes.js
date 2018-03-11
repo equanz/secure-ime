@@ -30,18 +30,23 @@ export let KeySave = function(name,email,bitnum,secret_key){
   })
 }
 
-/*
-export let Decrypt = function(secret_key){
-  let home = process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"]
-  let root = path.join(home,'.secure-ime','privkey.pem')
-  let crypted
-  fs.readFile(root,'utf8',function(err,data){
-    if(err){
-      throw err
-    }
-    crypted = data
+/**
+  * 秘密鍵の取り出し
+  * @param secret_key{string} - pass phrase for decrypt private key
+  * @return {Promise} - Promise object represent plain text or error
+  */
+export let DecryptKey = function(secret_key){
+  return new Promise(function(resolve,reject){
+    ipcRenderer.send('load')
+    ipcRenderer.on('retrun_data',function(event,data){
+      let bytes = CryptoJS.AES.decrypt(data,secret_key)
+      try{
+        let plain = bytes.toString(CryptoJS.enc.Utf8)
+        resolve(plain)
+      }
+      catch(err){
+        reject(err)
+      }
+    })
   })
-  let bytes = CryptoJS.AES.decrypt(crypted,secret_key)
-  return bytes.toString(CryptoJS.enc.utf8)
-
-*/
+}
