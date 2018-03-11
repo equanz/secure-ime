@@ -23,6 +23,7 @@ export let KeySave = function(name,email,bitnum,secret_key){
     }).then(function(){
       let ciphertext = CryptoJS.AES.encrypt(privkey,secret_key)
       ipcRenderer.send('save',ciphertext.toString())
+      resolve()
     }).catch(function(err){
       reject(err)
     })
