@@ -1,4 +1,5 @@
 import Vue from 'vue/dist/vue.esm'
+import ClipboardJS from 'clipboard'
 import * as pgp_lib from './pgp.js'
 import * as aes_lib from './aes.js'
 
@@ -36,7 +37,7 @@ let app = new Vue({
     },
     decrypt: {
       ciphertext: '',
-      source_email: '',
+      source_password: '',
       plaintext: ''
     }
   },
@@ -51,13 +52,14 @@ let app = new Vue({
         window.alert(err)
       }).then((ciphertext) => {
         this.encrypt.ciphertext = ciphertext // add to model
+
       }).catch((err) => {
         window.alert(err)
       })
     },
     decrypt_click: function (){
       // get own private key
-      aes_lib.KeyLoad(/*TODO: write AES password*/).then((own_privkey) => {
+      aes_lib.KeyLoad(this.decrypt.source_password).then((own_privkey) => {
         // decrypt by own private key
         return pgp_lib.Decrypt(this.decrypt.ciphertext, own_privkey)
       }).catch((err) => {

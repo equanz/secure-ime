@@ -39,11 +39,11 @@
         <span class="input-group">
           <textarea class="form-control" aria-label="With textarea" placeholder="Please type ciphertext!" v-model="decrypt.ciphertext"></textarea>
         </span>
+        <span class="input-group input-group-sm mb-3">
+          <input type="password" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Type your password" v-model="decrypt.source_password"/>
+        </span>
         <button type="button" class="btn btn-secondary" v-on:click="decrypt_click">Decrypt</button>
 
-        <span class="input-group input-group-sm mb-3">
-          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="example@example.com" v-model="decrypt.source_email"/>
-        </span>
         <span class="input-group">
           <textarea class="form-control" aria-label="With textarea" placeholder="Plaintext is here!" v-model="decrypt.plaintext"></textarea>
         </span>
