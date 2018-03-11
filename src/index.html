@@ -30,8 +30,9 @@
         <button type="button" class="btn btn-secondary" v-on:click="encrypt_click">Encrypt</button>
 
         <span class="input-group">
-          <textarea class="form-control" aria-label="With textarea" placeholder="Ciphertext is here!" v-model="encrypt.ciphertext"></textarea>
+          <textarea id="encrypt_cipher" class="form-control" aria-label="With textarea" placeholder="Ciphertext is here!" v-model="encrypt.ciphertext"></textarea>
         </span>
+        <button id="cipher_copy" data-clipboard-target="#encrypt_cipher" type="button" class="btn btn-primary">Copy!</button>
       </template>
 
       <!-- decrypt -->

@@ -1,4 +1,5 @@
 import Vue from 'vue/dist/vue.esm'
+import ClipboardJS from 'clipboard'
 import * as pgp_lib from './pgp.js'
 import * as aes_lib from './aes.js'
 
@@ -51,7 +52,6 @@ let app = new Vue({
         window.alert(err)
       }).then((ciphertext) => {
         this.encrypt.ciphertext = ciphertext // add to model
-
       }).catch((err) => {
         window.alert(err)
       })
@@ -71,3 +71,13 @@ let app = new Vue({
     }
   }
 })
+
+// encrypt clipboard
+let clipboard = new ClipboardJS('#cipher_copy')
+
+// copy succeed
+clipboard.on('success', function(e){
+  e.clearSelection() // unselect
+  window.alert('Copied!')
+})
+
