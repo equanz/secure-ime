@@ -1,5 +1,4 @@
 import Vue from 'vue/dist/vue.esm'
-import ClipboardJS from 'clipboard'
 import * as pgp_lib from './pgp.js'
 import * as aes_lib from './aes.js'
 
